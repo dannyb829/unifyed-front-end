@@ -37,7 +37,6 @@ function Login({ setIsNewUser, setForgotPassword }) {
         fetch(BASE_URL + "/login", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            'Access-Control-Allow-Origin': '*',
             body: JSON.stringify(login)
         }).then(resp => resp.ok ? resp.json().then(userData => setUser(userData), navigate('/Home'))
             : resp.json().then(data => handleMessageVariant(data.error,'error')))
