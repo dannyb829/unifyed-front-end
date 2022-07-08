@@ -2,6 +2,7 @@
   "name": "unifyed",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://uni-fyed.herokuapp.com/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -20,7 +21,7 @@
     "date-fns":"2.28.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test":  "echo \"Error: no test specified\" && exit 1",
     "eject": "react-scripts eject"
