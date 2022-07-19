@@ -62,7 +62,7 @@ function AccountPage() {
     const handleProfileUpdate = () => {
         fetch(BASE_URL + `/accounts/${user.id}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
             body: JSON.stringify(profileUpdate)
         })
             .then(r => {
@@ -78,7 +78,7 @@ function AccountPage() {
 
         <Card elevation={12} sx={{ margin: 'auto', marginTop: '3%', maxWidth: 1000, maxHeight: 800, minHeight: 680, overflow: 'scroll' }}>
             <Grid container spacing={3}>
-                <Grid item item xs={6} md={8}>
+                <Grid item xs={6} md={8}>
 
                     <Box
                         component="form"

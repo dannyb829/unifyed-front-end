@@ -13,6 +13,7 @@ import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { BASE_URL } from '../Utilities'
 
 
 function ActivityFeed({ account = '', userActivities = null, setUserActivities}) {
@@ -27,7 +28,7 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
     const { enqueueSnackbar } = useSnackbar()
 
     useEffect(() => {
-        fetch(`/activities/${account}`)
+        fetch(BASE_URL + `/activities/${account}`,{ headers: {"Authorization": localStorage.getItem('token')}})
             .then(resp => resp.ok ? resp.json().then(setActivities)
                 : resp.json().then(data => enqueueSnackbar(data.error, { variant: 'error' })))
         if (userActivities) {
@@ -38,8 +39,8 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
 
 
     function deletUserPost(postId) {
-        fetch(`/posts/${postId}`,{ method: 'DELETE' })
-        .then(resp => setActivities(prev => prev.filter(act => act.trackable.id !== postId)))
+        fetch(BASE_URL +`/posts/${postId}`,{ method: 'DELETE', headers:{"Authorization": localStorage.getItem('token')} })
+        .then(resp => setActivities(prev => prev.filter(act => act.trackable?.id !== postId)))
     }
 
 

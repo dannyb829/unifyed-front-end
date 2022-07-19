@@ -28,10 +28,10 @@ function HomePage() {
   //Getting articles below
   useEffect(()=>{
     if (user) {
-    fetch(BASE_URL + '/headlines')
+    fetch(BASE_URL + '/headlines',{headers:{"Authorization": localStorage.getItem('token')}})
     .then(resp=> resp.json())
     .then(setHeadlines)
-    fetch(BASE_URL + '/followees')
+    fetch(BASE_URL + '/followees',{headers:{"Authorization": localStorage.getItem('token')}})
     .then(resp => resp.json())
     .then(setPeopleFollowed)
     }

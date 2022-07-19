@@ -26,7 +26,7 @@ function ArticlePage() {
 
  
     useEffect(() => {
-        fetch(BASE_URL + `/headlines/${id}`)
+        fetch(BASE_URL + `/headlines/${id}`,{headers:{"Authorization": localStorage.getItem('token')}})
         .then(resp => resp.json())
         .then(setArticle)
     }, [])
@@ -48,7 +48,7 @@ function ArticlePage() {
     const handleIncrementLike = (type,type_id) => {
         fetch(BASE_URL + '/likes',{
             method:'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content-Type':'application/json', "Authorization": localStorage.getItem('token')},
             body: JSON.stringify({type, type_id})})
         .then(resp => resp.ok ? resp.json().then(update => {console.log('like added',update);setArticle(update)})
             : resp.json().then(({error}) => enqueueSnackbar(error,{variant:'error'})))
@@ -56,7 +56,7 @@ function ArticlePage() {
     const handleDecrementLike = (type,type_id) => {
         fetch(BASE_URL + '/likes/1',{
             method:'DELETE',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content-Type':'application/json', "Authorization": localStorage.getItem('token')},
             body: JSON.stringify({type, type_id})})
         .then(resp => resp.ok ? setArticle(prev => ({...prev, 'likes': likes.filter(like => like.account_id !== user.id), 'user_liked': !user_liked}))
             : resp.json().then(({error}) => enqueueSnackbar(error, 'error')))

@@ -29,7 +29,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(BASE_URL + "/auth").then((r) =>
+    fetch(BASE_URL + "/auth", {headers:{"Authorization": localStorage.getItem('token')}}).then((r) =>
       r.ok
         ? r.json().then((data) => {
             setUser(data);
@@ -48,7 +48,7 @@ function App() {
     preventDuplicate
     >
 
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser}}>
     <NavBar pages={pages}/>
     <Routes>
       <Route path='/login' element={<LoginPage setUser={setUser}/>}></Route>

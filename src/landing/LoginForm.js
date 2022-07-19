@@ -32,13 +32,18 @@ function Login({ setIsNewUser, setForgotPassword }) {
         setLogin(prev => ({ ...prev, [name]: value }))
     }
 
+    function handleUseAndToken(jwt, user) {
+        localStorage.setItem('token', jwt)
+        setUser(user)
+    }
+
     function handleLogin(e) {
         e.preventDefault()
         fetch(BASE_URL + "/login", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(login)
-        }).then(resp => resp.ok ? resp.json().then(userData => setUser(userData), navigate('/Home'))
+        }).then(resp => resp.ok ? resp.json().then(data => handleUseAndToken(data.token, data.user), navigate('/Home'))
             : resp.json().then(data => handleMessageVariant(data.error,'error')))
 
 

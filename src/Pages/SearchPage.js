@@ -31,14 +31,14 @@ export default function SearchPage() {
     useEffect(() => {
         fetch(BASE_URL + '/headlines/search', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
             body: JSON.stringify({ search: query })
         })
             .then(resp => resp.json())
             .then(setHeadlineResults)
         fetch(BASE_URL + '/accounts/search', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
             body: JSON.stringify({ search: query })
         })
             .then(resp => resp.json())

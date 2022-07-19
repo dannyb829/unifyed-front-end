@@ -55,7 +55,7 @@ function ProfilePage() {
 
 
     useEffect(() => {
-        fetch(BASE_URL + `/accounts/${id}`)
+        fetch(BASE_URL + `/accounts/${id}`,{headers:{"Authorization": localStorage.getItem('token')}})
             .then(resp => resp.ok ? resp.json().then(setCurrentProfile)
                 : resp.json().then(data => enqueueSnackbar(data.error, { variant: 'error' })))
     }, [id])
@@ -66,7 +66,7 @@ function ProfilePage() {
         e.preventDefault()
         fetch(BASE_URL + '/posts',{
             method:'POST',
-            headers:{'Content-Type':'application/json'},
+            headers:{'Content-Type':'application/json',"Authorization": localStorage.getItem('token')},
             body: JSON.stringify({content:userPost})
         }).then(resp => resp.ok ? resp.json().then(setUserActivities)
         : resp.json().then(data => enqueueSnackbar(data.error,{variant:'error'}))
@@ -77,7 +77,7 @@ function ProfilePage() {
     function handleFollows(){
         fetch(BASE_URL + `/friendships${!user_followed ? "" : "/" + id}`,{
             method: user_followed ? 'DELETE' : 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', "Authorization": localStorage.getItem('token')},
             body: JSON.stringify({id:id})})
         .then(resp => resp.ok ? resp.json().then(setCurrentProfile)
         : resp.json().then(data => enqueueSnackbar(data.error,{variant:'error'})))

@@ -99,6 +99,7 @@ const NavBar = ({pages}) => {
             .then(resp => {
                 if (resp.ok) {
                     setUser(null)
+                    localStorage.clear()
                     navigate('/login')
                 }
             })

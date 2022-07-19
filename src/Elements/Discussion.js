@@ -14,6 +14,7 @@ import { UserContext } from '../UserContext';
 import { ThumbUpAltOutlined } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { BASE_URL } from '../Utilities';
 
 export default function Discussion({ article }) {
   const [comments, setComments] = useState(null)
@@ -28,9 +29,9 @@ export default function Discussion({ article }) {
   }, [article])
 
   const handlePostComment = () => {
-    fetch('/comments', {
+    fetch(BASE_URL + '/comments', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
       body: JSON.stringify({ content: newComment, id: article.id, type:'Headline' })
     })
       .then(resp => resp.ok ? resp.json().then(data => setComments(prev => [...prev, data]))
@@ -40,7 +41,7 @@ export default function Discussion({ article }) {
 
   
   const handleDeleteComment = (id) => {
-    fetch(`/comments/${id}`, {method: 'DELETE'})
+    fetch(`/comments/${id}`, {method: 'DELETE', headers: {"Authorization": localStorage.getItem('token')}})
     .then(resp => {if (resp.ok) setComments(prev => prev.filter(comment => comment.id !== id))})
   }
   
@@ -50,15 +51,15 @@ export default function Discussion({ article }) {
 
     const handleLike = (method, type, type_id) => {
       method === 'POST' ? 
-      fetch(`/likes`,{
+      fetch(BASE_URL +`/likes`,{
         method,
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json', "Authorization": localStorage.getItem('token')},
         body: JSON.stringify({type,type_id})})
         .then(resp => resp.ok ? resp.json().then(update => setComments(prev => prev.map(comm => comm.id === update.id ? update : comm)))
               : resp.json().then(({error}) => enqueueSnackbar(error,{variant:'error'}))) :
-      fetch('/likes/1',{
+      fetch(BASE_URL +'/likes/1',{
         method,
-        headers: {'Content-Type':'application/json'},
+        headers: {'Content-Type':'application/json', "Authorization": localStorage.getItem('token')},
         body: JSON.stringify({type, type_id})})
         .then(resp => resp.ok ? setComments(prev => prev.map(comm => comm.id === type_id ? {...comm, 'likes': likes.filter(like => like.account_id !== user.id), 'user_liked': !comm.user_liked} : comm))
               : resp.json().then(({error}) => enqueueSnackbar(error, 'error')))

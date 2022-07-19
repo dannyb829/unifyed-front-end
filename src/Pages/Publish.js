@@ -60,7 +60,7 @@ function Publish() {
 
             fetch(BASE_URL + '/headlines', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', "Authorization": localStorage.getItem('token') },
                 body: JSON.stringify(newArticle)
             })
                 .then(resp => {
