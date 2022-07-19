@@ -7,6 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from '../Utilities'
 
 
 
@@ -21,7 +22,7 @@ function Preview() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('/preview')
+        fetch(BASE_URL + '/preview')
         .then(resp => {if (resp.ok) resp.json().then(setPreviewArticles)})
         .catch(err => enquequeSnackbar(err,{variant:'error'}))
     },[])
