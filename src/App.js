@@ -20,6 +20,7 @@ import { BASE_URL } from './Utilities';
 
 function App() {
   const [user ,setUser] = useState(null) 
+  document.title = 'UNIFYED'
   
   const navigate = useNavigate()
 
