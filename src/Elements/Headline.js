@@ -24,7 +24,7 @@ function Headline({article}) {
     } = article
 
     return (
-        <Card elevation={10} sx={{ maxWidth: 374 }}>
+        <Card elevation={12} sx={{maxWidth: '18.3rem',bgcolor:'#fcf5f9'}}>
       <CardActionArea onClick={e=> navigate(`/Article/${id}`)}>
         <CardMedia
           component="img"

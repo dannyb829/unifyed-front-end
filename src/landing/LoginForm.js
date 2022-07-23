@@ -76,9 +76,9 @@ function Login({ setIsNewUser, setForgotPassword }) {
                     value={password}
                     onChange={handleCredentials}
                 /><br></br>
-                <Button type='submit'>Submit</Button><br></br>
-                <Button onClick={e => setIsNewUser(true)}>Sign-up</Button><br></br>
-                <Button onClick={e => setForgotPassword(true)}>Forgot password?</Button>
+                <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}} type='submit'>Submit</Button><br></br>
+                <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}}  onClick={e => setIsNewUser(true)}>Sign-up</Button><br></br>
+                <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}}  onClick={e => setForgotPassword(true)}>Forgot password?</Button>
             </Box>
         </>
     )

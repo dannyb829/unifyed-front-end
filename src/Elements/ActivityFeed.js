@@ -16,13 +16,14 @@ import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 import { BASE_URL } from '../Utilities'
 
 
-function ActivityFeed({ account = '', userActivities = null, setUserActivities}) {
+function ActivityFeed({ account = '', userActivities = null, setUserActivities, inSideBar = false}) {
 
     const { user } = useContext(UserContext)
 
     const [activities, setActivities] = useState([])
 
-    
+    const sideBarFont = inSideBar ? 'small' : 'h6'
+
     const navigate = useNavigate()
 
     const { enqueueSnackbar } = useSnackbar()
@@ -54,12 +55,12 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
                         <Typography
                             sx={{ display: 'inline' }}
                             component="span"
-                            variant="h6"
-                            color="text.primary"
+                            variant={sideBarFont}
+                            color="white"
                         >
                             <b onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        </Typography>
                         {" "}commented on <b>{recipient_type === 'Headline' ? recipient?.author : recipient?.first_name + "'s"}</b> {recipient_type} - {trackable?.content}
+                        </Typography>
                     </React.Fragment>
                 );
 
@@ -69,12 +70,12 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
                         <Typography
                             sx={{ display: 'inline' }}
                             component="span"
-                            variant="h6"
-                            color="text.primary"
+                            variant={sideBarFont}
+                            color="white"
                         >
                             <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        </Typography>
                         {" "}liked <b>{recipient_type === 'Headline' ? recipient?.author + "'s" : recipient?.first_name + "'s"}</b> {trackable?.likeable_type}
+                        </Typography>
                     </React.Fragment>
                 );
             case 'Post':
@@ -83,12 +84,12 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
                         <Typography
                             sx={{ display: 'inline' }}
                             component="span"
-                            variant="h6"
-                            color="text.primary"
+                            variant={sideBarFont}
+                            color="white"
                         >
                             <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        </Typography>
                         {" "}posted on <b>Feed</b> -<strong style={{fontSize:'1.3em'}}>  "{trackable.content}"</strong> 
+                        </Typography>
                         { user?.id === owner.id ? <IconButton aria-label="delete" sx={{float:'right'}} onClick={e => deletUserPost(trackable.id)}>
           <DeleteIcon />
         </IconButton> : null}
@@ -100,12 +101,12 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
                         <Typography
                             sx={{ display: 'inline' }}
                             component="span"
-                            variant="h6"
-                            color="text.primary"
+                            variant={sideBarFont}
+                            color="white"
                         >
                             <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        </Typography>
                         {" "}now follows <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${recipient.id}`)}>{recipient.first_name + " " + recipient.last_name}</b>
+                        </Typography>
                     </React.Fragment>
                 )
             case 'Headline':
@@ -114,12 +115,12 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
                         <Typography
                             sx={{ display: 'inline' }}
                             component="span"
-                            variant="h6"
-                            color="text.primary"
+                            variant={sideBarFont}
+                            color="white"
                         >
                             <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        </Typography>
                         {" "}published an article <b style={{cursor:'pointer'}} onClick={e => navigate(`/Article/${trackable.id}`)}>{trackable?.title}</b>
+                        </Typography>
                     </React.Fragment>
                 )
 
@@ -134,16 +135,18 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
 
 
     const displayActivities = activities.map(act => (
-        <div key={act.id}>
-        <ListItem alignItems="flex-start" >
+        <div key={act.id} >
+        <ListItem alignItems="flex-start" sx={{padding:.5}}>
             <ListItemAvatar>
                 <Avatar alt={act.owner.first_name} src={act.owner.image_url} />
             </ListItemAvatar>
+            {inSideBar ? <br></br> : null}
             <ListItemText
                 primary={formatDistance(new Date(act.created_at), new Date(), { addSuffix: true })}
                 secondary={
                     manageActivity(act)
                 }
+                style={{color:'white'}}
             />
 
         </ListItem>
@@ -154,7 +157,7 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities})
 
 
     return (
-        <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper', overflow:'scroll' }}>
+        <List sx={{ width: '100%', maxWidth: '100%', bgcolor: '#00000000'}}>
             {displayActivities}
         </List>
     )

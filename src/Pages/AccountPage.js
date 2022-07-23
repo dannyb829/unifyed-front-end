@@ -43,6 +43,10 @@ function AccountPage() {
         bio
     } = profileUpdate
 
+    function faceDetectTransorm(link) {
+       return [link.split('upload/')[0],"upload/c_thumb,g_faces,h_300,w_400/",link.split('upload/')[1]].join('')
+    }
+
 
     const uploadImage = (e) => {
         e.stopPropagation()
@@ -51,7 +55,7 @@ function AccountPage() {
         formData.append("upload_preset", "equlchhq")
 
         axios.post("https://api.cloudinary.com/v1_1/unifyed-media/image/upload", formData)
-            .then(image => setProfileUpdate(prev => ({...prev, image_url: image.data.secure_url})))
+            .then(image => setProfileUpdate(prev => ({...prev, image_url: faceDetectTransorm(image.data.secure_url)})))
     }
 
 

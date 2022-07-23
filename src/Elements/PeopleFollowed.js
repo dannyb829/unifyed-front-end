@@ -21,26 +21,25 @@ function PeopleFollowed({people}) {
 
         <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt={person.first_name} src={person.image_url}/>
+          <Avatar alt={person.first_name} src={person.image_url} sx={{ width: 60, height: 60,marginRight:'.5em' }}/>
         </ListItemAvatar>
         <ListItemText
-          primary={person.username}
+          sx={{color:'white'}}
+          // primary={person.username}
           secondary={
             <>
               <Typography
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                color="text.primary"
+                color="white"
               >
-                <b>{person.first_name} {person.last_name}</b>
-              </Typography>
+                <strong>{person.first_name} {person.last_name}</strong>
               {person.follows_user ? <><br></br>follows you too</> : null}
+              </Typography>
             </>
           }
         />
-              
-        
       </ListItem>
         </CardActionArea>
       <Divider variant="inset" component="li" />
@@ -56,7 +55,7 @@ function PeopleFollowed({people}) {
 
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', overflowX:'clip' }}>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#00000000', overflowX:'clip' }}>
       {peopleList}
     </List>
   );

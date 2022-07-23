@@ -21,6 +21,7 @@ function LoginPage() {
 
     return (
         <div id='login-page'>
+            <img id='home-globe' alt='world unifyed' src='images/worldunifyed.png'></img>
             <div id='login-items' style={{overflow:'scroll'}}>
             <img id='home-page-logo' src='images/UNifyed.png'></img>
             {forgotPassword ? <ForgotPassword setForgotPassword={setForgotPassword}/> : isNewUser? 

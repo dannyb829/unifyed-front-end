@@ -52,8 +52,8 @@ export default function SearchPage() {
 
         return (
             
-            <Grid item xs={1} md={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Grid item xs={1} md={3} >
+            <Card sx={{maxWidth: 345, bgcolor:'#aab0b445', color:'white'}}>
                 <CardActionArea onClick={e => navigate(`/Article/${result.id}`)}>
                     <CardMedia
                         component="img"
@@ -65,7 +65,7 @@ export default function SearchPage() {
                         <Typography gutterBottom variant="h5" component="div">
                             {result.title.slice(0, 50) + '...'}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" >
                             {result.content.slice(0, 100) + '...'}<small>click for more</small>
                         </Typography>
                     </CardContent>
@@ -81,7 +81,7 @@ export default function SearchPage() {
         return (
             
             <Grid item xs={1} md={3}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345,bgcolor:'#aab0b445', color:'white' }}>
                 <CardActionArea onClick={e => navigate(`/Profile/${result.id}`)}>
                     <CardMedia
                         component="img"
@@ -93,7 +93,7 @@ export default function SearchPage() {
                         <Typography gutterBottom variant="h5" component="div">
                             {result.first_name + " " + result.last_name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" >
                             <small>{result.username}</small>
                         </Typography>
                     </CardContent>
@@ -116,7 +116,7 @@ export default function SearchPage() {
     return (
         <Grid container spacing={4} sx={{ justifyContent: 'center', marginTop: '1em', marginBottom: '2em' }}>
             <Grid item xs={6} md={11} >
-                <Item elevation={12} sx={{ height: '27em', overflow:'scroll' }}>People on UNIFYED
+                <Item elevation={5} sx={{ height: '27em', overflow:'scroll',bgcolor:'#0000' }}>People on UNIFYED
                     <Grid container spacing={1} sx={{ }} >
                     {peopleContent.length < 1 ? <h2>{`No users found: "${query}" `}</h2> : null}
                     {peopleContent}
@@ -124,7 +124,7 @@ export default function SearchPage() {
                 </Item>
             </Grid>
             <Grid item xs={6} md={11}>
-                <Item elevation={12} sx={{ height: '27em', overflow:'scroll'}}>Headlines
+                <Item elevation={5} sx={{ height: '27em', overflow:'scroll', bgcolor:'#0000'}}>Headlines
                     <Grid container spacing={1} sx={{ }} >
                     {headlineContent.length < 1 ? <h1>{`No users found: "${query}" `}</h1> : null}
                     {headlineContent}

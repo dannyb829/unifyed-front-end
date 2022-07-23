@@ -25,7 +25,7 @@ function Publish() {
         author: user?.first_name + " " + user?.last_name,
         source: 'Unifyed',
         title: '',
-        image_url: 'https://sirencomms.com/wp-content/themes/massive-dynamic/assets/img/placeholders/placeholder1.jpg',
+        image_url: '/images/uploadplaceholder.png',
         content: '',
         date: new Date()
     }
@@ -39,7 +39,7 @@ function Publish() {
     } = newArticle
 
     useEffect(() => {
-        if (user.account_access !== 'creator') navigate('/Home')
+        if (user?.account_access !== 'creator') navigate('/Home')
     }, [user])
 
     const uploadImage = (image) => {
@@ -77,15 +77,13 @@ function Publish() {
     }
 
     return (
-
-        <Grid container spacing={3} sx={{ justifyContent: 'center', width: '80%', height: 800, minHeight: 680, margin: 'auto' }}>
-            <Grid item sx={{ width: '100%' }} >
-
-                <Card elevation={12} sx={{ height: 830, marginBottom: '3em' }}>
+                <>
+                <Card elevation={0} sx={{bgcolor:'#0000',color:'white',maxWidth:'65%',height:'120vh',margin:'auto' }}>
                 <div>
+                <h1 style={{float:'left', marginLeft:'2rem',color:'white'}}>UPLOAD IMAGE HERE</h1>
 
-                <IconButton aria-label="upload image" color='primary' sx={{ transform: 'scale(3)',left:'15%',top:'17%', position:'absolute' }}>
-                    <label for='upload-input'>
+                <IconButton aria-label="upload image" color='primary' sx={{ transform: 'scale(3) translate(-15rem,2rem)'}}>
+                    <label htmlFor='upload-input'>
                         <AddCircleIcon />
                         <input accept="image/*" id="upload-input" multiple type="file" name='image_url' style={{ display: 'none' }} onChange={e => uploadImage(e.target.files[0])}></input>
                     </label>
@@ -98,33 +96,33 @@ function Publish() {
                         alt="something"
                     />
                 </div>
-
+                    <h1 style={{textAlign:'left', marginLeft:'2rem'}}>Title</h1>
                     <TextField
-                        sx={{ transform: 'translate(0,1em)', width: '95%' }}
+                        sx={{width: '95%',input: { color: 'white',fontWeight:'bold' }, marginBottom:'2rem' }}
                         id="outlined-required"
-                        label="title"
                         name='title'
                         value={title}
                         onChange={handleArticleChange}
+                        color='secondary'
                     />
 
+                    <h1 style={{textAlign:'left', margin:'0 0 0 2rem'}}>Tell your story</h1>
                     <TextField
-                        id="outlined-multiline-static"
-                        label="story"
+                        sx={{ transform: 'translate(0,1em)', width: '95%',textArea: { color: 'white',fontWeight:'bold' } }}
+                        id="outlined"
                         name='content'
                         multiline
                         rows={10}
                         value={content}
                         onChange={handleArticleChange}
-                        sx={{ transform: 'translate(0,3em)', width: '95%' }}
+                        color='secondary'
                     />
                     <Button variant='contained'
-                        sx={{ float: 'right', right: '2.65em', top: '4em' }}
+                        sx={{ float: 'right', right: '2.65em', top: '2rem',background:'#db56d775', ":hover":{background:'#db56d795'} }}
                         onClick={publishArticle}
                     >Publish</Button>
                 </Card>
-            </Grid>
-        </Grid>
+                </>
     )
 
 

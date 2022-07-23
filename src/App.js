@@ -46,7 +46,7 @@ function App() {
         vertical: 'bottom',
         horizontal: 'right',
     }}
-    preventDuplicate
+    // preventDuplicate
     >
 
     <UserContext.Provider value={{ user, setUser}}>
