@@ -107,7 +107,7 @@ export default function Discussion({ article }) {
 
 
   return (
-    <Card elevation={5} sx={{bgcolor:'#d8d8d835',}}> 
+    <Card elevation={5} sx={{bgcolor:'#d8d8d835',margin:'0 1rem'}}> 
 
       <List sx={{ maxWidth: 380, height:665, bgcolor: '#d8d8d800' }}>
       <div style={{

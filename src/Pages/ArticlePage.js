@@ -64,9 +64,9 @@ function ArticlePage() {
 
     return (
         <Grid container spacing={3} sx={{justifyContent:'center',marginTop:'3em'}}>
-            <Grid item >
+            <Grid item xs={12} lg={8}>
 
-                <Card elevation={12} sx={{ maxWidth: 1000, maxHeight: 600, minHeight: 680, overflow: 'scroll',bgcolor:'#40464a45' }}>
+                <Card elevation={12} sx={{ maxHeight: 600, minHeight: 680, overflow: 'scroll',bgcolor:'#40464a45', margin:'0 1rem'}}>
                     <CardMedia
                         component="img"
                         height="300"
@@ -90,7 +90,7 @@ function ArticlePage() {
                     </CardActions>
                 </Card>
             </Grid>
-            <Grid item>
+            <Grid item xs={12} lg={2.5}>
                 <Discussion article={article}/>
             </Grid>
         </Grid>
