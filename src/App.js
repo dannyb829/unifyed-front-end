@@ -54,6 +54,7 @@ function App() {
     <Routes>
       <Route path='/login' element={<LoginPage setUser={setUser}/>}></Route>
       <Route path='/Home' element={<HomePage setUser={setUser}/>}></Route>
+      <Route path='/' element={<HomePage setUser={setUser}/>}></Route>
       <Route path='/Profile/:id' element={<ProfilePage/>}></Route>
       <Route path='/About' element={<AboutPage/>}></Route>
       <Route path='/Article/:id' element={<ArticlePage/>}></Route>
