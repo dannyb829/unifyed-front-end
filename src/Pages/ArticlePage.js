@@ -66,7 +66,7 @@ function ArticlePage() {
         <Grid container spacing={3} sx={{justifyContent:'center',marginTop:'3em'}}>
             <Grid item >
 
-                <Card elevation={12} sx={{ maxWidth: 1000, maxHeight: 600, minHeight: 680, overflow: 'scroll' }}>
+                <Card elevation={12} sx={{ maxWidth: 1000, maxHeight: 600, minHeight: 680, overflow: 'scroll',bgcolor:'#40464a45' }}>
                     <CardMedia
                         component="img"
                         height="300"
@@ -74,23 +74,23 @@ function ArticlePage() {
                         alt={title}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography gutterBottom variant="h5" component="div" color='white'>
                             {title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="white">
                             {content}
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Share</Button>
+                        {/* <Button size="small">Share</Button> */}
                         <Button size="small" 
+                        sx={{color:'white',background:'#db56d775',":hover":{background:'#db56d795'}}}
                         onClick={e => user_liked ? handleDecrementLike('Headline',id) : handleIncrementLike('Headline',id)} 
-                        endIcon={user_liked ? <ThumbUpOffAltIcon/> : <ThumbUpAltIcon/>}>{`${likes?.length} ${likes?.length === 1 ?"Like" : "Likes"}`}</Button>
+                        endIcon={user_liked ? <ThumbUpAltIcon/> : <ThumbUpOffAltIcon/>}>{`${likes?.length} ${likes?.length === 1 ?"Like" : "Likes"}`}</Button>
                     </CardActions>
                 </Card>
             </Grid>
             <Grid item>
-
                 <Discussion article={article}/>
             </Grid>
         </Grid>

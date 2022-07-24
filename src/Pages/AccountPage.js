@@ -80,23 +80,14 @@ function AccountPage() {
 
     return (
 
-        <Card elevation={12} sx={{ margin: 'auto', marginTop: '3%', maxWidth: 1000, maxHeight: 800, minHeight: 680, overflow: 'scroll' }}>
+        <Card elevation={3} sx={{margin:'3% auto', maxWidth: 1000, minHeight: 680, overflow: 'scroll' ,bgcolor:'#d8d8d845'}}>
             <Grid container spacing={3}>
-                <Grid item xs={6} md={8}>
+                <Grid item xs={12} md={6} container spacing={4} sx={{color:'white', textArea:{color:'white'}}}>
+                            <Grid item xs={12} >
+                            <h1 style={{float:'left', marginLeft:'.5em'}}>EDIT PROFILE</h1>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
 
-                    <Box
-                        component="form"
-                        sx={{
-                            '& .MuiTextField-root': { m: 1, width: '25ch' },
-                            textAlign: 'left',
-                            margin: '1em'
-
-                        }}
-                        noValidate
-                        autoComplete="off"
-                    >
-                        <div>
-                            <h1>EDIT PROFILE</h1>
                             <TextField
                                 id="outlined-multiline-flexible"
                                 label="first name"
@@ -105,7 +96,10 @@ function AccountPage() {
                                 maxRows={4}
                                 value={first_name}
                                 onChange={handleChange}
+                                color='secondary'
                             />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
                             <TextField
                                 id="outlined-multiline-flexible"
                                 label="last name"
@@ -114,7 +108,11 @@ function AccountPage() {
                                 maxRows={4}
                                 value={last_name}
                                 onChange={handleChange}
+                                color='secondary'
                             />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+
                             <TextField
                                 id="outlined-multiline-flexible"
                                 label="username"
@@ -123,7 +121,12 @@ function AccountPage() {
                                 maxRows={4}
                                 value={username}
                                 onChange={handleChange}
+                                color='secondary'
                             />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+
+
                             <TextField
                                 id="outlined-multiline-flexible"
                                 label="email"
@@ -132,7 +135,10 @@ function AccountPage() {
                                 maxRows={4}
                                 value={email}
                                 onChange={handleChange}
+                                color='secondary'
                             />
+                            </Grid>
+                            <Grid item xs={12} md={6}>
                             <TextField
                                 id="outlined-multiline-static"
                                 label="Bio"
@@ -142,17 +148,19 @@ function AccountPage() {
                                 placeholder='Describe yourself'
                                 value={bio}
                                 onChange={handleChange}
+                                color='secondary'
                             />
-                        </div>
-                        <Button variant='contained' endIcon={<SaveIcon />} onClick={handleProfileUpdate} >save changes</Button>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
 
-                    </Box>
+                        <Button variant='contained' endIcon={<SaveIcon />} onClick={handleProfileUpdate} >save changes</Button>
+                            </Grid>
                         <Divider variant="inset" />
                 </Grid>
-                <Grid item xs={6} md={3} margin='auto'>
-                    <img src={image_url} style={{maxWidth:'15em'}}/>
+                <Grid item xs={12} md={6} margin='5rem auto'>
+                    <img src={image_url} style={{maxWidth:'15rem'}}/>
                     <label htmlFor="contained-button-file">
-                        <input accept="image/*" id="contained-button-file" multiple type="file" name='image_url' onChange={e => setImage(e.target.files[0])}></input>
+                        <input style={{color:'white'}} accept="image/*" id="contained-button-file" multiple type="file" name='image_url' onChange={e => setImage(e.target.files[0])}></input>
                     </label>
                         <Button variant="contained" component="span" onClick={uploadImage}>
                             Upload

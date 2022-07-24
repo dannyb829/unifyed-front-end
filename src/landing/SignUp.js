@@ -17,7 +17,7 @@ const defaultSignUp = {
     username: "",
     password: "",
     password_confirmation: "",
-    account_access: "user"
+    account_access: "creator"
 }
 
 
@@ -66,7 +66,8 @@ function SignUp({ setIsNewUser }) {
             id='sign-up'
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '25ch' }
+                '& > :not(style)': { m: 1, width: '25ch' },
+                input:{bgcolor:'white', borderRadius:'5px'}
             }}
             noValidate
             autoComplete="off"
@@ -78,6 +79,7 @@ function SignUp({ setIsNewUser }) {
                 value={first_name}
                 placeholder='First name'
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
             <TextField
                 id="outlined-name"
@@ -85,6 +87,7 @@ function SignUp({ setIsNewUser }) {
                 value={last_name}
                 placeholder='Last name'
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
             <TextField
                 id="outlined-name"
@@ -92,6 +95,7 @@ function SignUp({ setIsNewUser }) {
                 value={email}
                 placeholder='valid email'
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
             <TextField
                 id="outlined-name"
@@ -100,6 +104,7 @@ function SignUp({ setIsNewUser }) {
                 placeholder='valid username'
                 autoComplete='off'
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
             <TextField
                 id="outlined-name"
@@ -109,6 +114,7 @@ function SignUp({ setIsNewUser }) {
                 autoComplete='new-password'
                 placeholder='enter password'
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
             <TextField
                 id="outlined-uncontrolled"
@@ -117,25 +123,15 @@ function SignUp({ setIsNewUser }) {
                 placeholder='confirm password'
                 value={password_confirmation}
                 onChange={handleCredentials}
+                color='secondary'
             /><br></br>
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                name='account_access'
-                value={account_access}
-                label="type"
-                onChange={handleCredentials}
-            >
-                <MenuItem value='user'>User</MenuItem>
-                <MenuItem value='creator'>Creator</MenuItem>
-            </Select><br></br>
-            <Button type='submit'>Submit</Button><br></br>
-            <Button onClick={e => setIsNewUser(false)}>Already a user? Login</Button>
+            <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}} type='submit'>Submit</Button><br></br>
+            <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}} onClick={e => setIsNewUser(false)}>Already a user? Login</Button>
         </Box>
     ) : (
         <>
             <h2> Thank you for signing up!, please check your email for a confirmation link.</h2>
-            <Button onClick={e => setIsNewUser(false)}> Login </Button><br></br>
+            <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}} onClick={e => setIsNewUser(false)}> Login </Button><br></br>
         </>
         )
 }

@@ -88,11 +88,10 @@ function ProfilePage() {
 
 
     return (
-        <Box sx={{ flexGrow: 1, margin: '3em' }}>
-            <Grid container spacing={3}>
-                <Grid item xs={6} md={4} >
+            <Grid container spacing={1} height='100vh'>
+                <Grid item xs={12} xl={4} margin='1rem'>
 
-                    <Card elevation={0} sx={{ maxWidth: 600, height: '90vh', margin: 'auto', bgcolor: '#00000000', color: 'white', textAlign: 'left' }}>
+                    <Card elevation={0} sx={{ bgcolor: '#00000000', color: 'white', textAlign: 'left' }}>
                         <CardActionArea>
 
                             <CardMedia
@@ -134,24 +133,22 @@ function ProfilePage() {
                                     <PeopleOutlineIcon />
                                     <span>Following: {followees_amount}</span>
                                 </div>
-                        </CardContent>
-                        <CardActions>
                             {user?.id !== parseInt(id) ?
-                                <>
                                     <Button variant='contained' sx={{color:'white', 
                                                                     background:'#db56d775', 
                                                                     ":hover":{background:'#db56d795'},
-                                                                    transform:'translate(-8rem,1rem)'
+                                                                    display:'block',
+                                                                    clear:'left',
+                                                                    top:'1rem'
                                                                     }} onClick={handleFollows}>{user_followed ? "Un-follow" : follows_user ? "Follow back" : "Follow"}</Button>
-                                </>
                                 : null}
-                        </CardActions>
+                        </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={8} sx={{ transform: 'translate(1%)' }} >
+                <Grid item xs={12} xl={7.5} container margin='1rem'>
 
-                    {user?.id === parseInt(id) ? <Grid item xs={6} md={12} >
-                        <Item elevation={5} sx={{ height: '10.3em', marginBottom: '3em', bgcolor:'#d8d8d835' }} >
+                    {user?.id === parseInt(id) ? <Grid item xs={12} marginBottom='1em'>
+                        {/* <Item elevation={5} sx={{ height: '10.3em', marginBottom: '3em', bgcolor:'#d8d8d835' }} > */}
 
                             <TextField
                                 label="Whats on your mind?"
@@ -164,22 +161,23 @@ function ProfilePage() {
                                 color='secondary'
                             />
 
-                            <Button variant='contained'
-                                sx={{transform: 'translate(25rem, .5em)',color:'white', background:'#db56d775', ":hover":{background:'#db56d795'}}}
+                            <Button id='feed-post-button'
+                                variant='contained'
+                                sx={{float:'right',marginTop:'1rem',color:'white', background:'#db56d775', ":hover":{background:'#db56d795'}}}
                                 onClick={handlePost}
                             >POST</Button>
 
 
-                        </Item>
+                        {/* </Item> */}
                     </Grid> : null}
-                    <Grid item xs={6} md={12} >
+                    <Grid item xs={12} >
                         <Item elevation={5} sx={{ height: '43.51em', overflow: 'scroll', background: '#00000000' }} >Activity
                             <ActivityFeed account={id} userActivities={userActivities} setUserActivities={setUserActivities} />
                         </Item>
                     </Grid>
                 </Grid>
             </Grid>
-        </Box>
+        // </Box>
     )
 }
 

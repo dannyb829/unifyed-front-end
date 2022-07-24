@@ -66,12 +66,15 @@ export default function Discussion({ article }) {
     }
     
     if (comments) return (
+      <>
+
     <div key={comment.id} >
-      <ListItem alignItems="flex-start" >
+      <ListItem alignItems="flex-start"  >
         <ListItemAvatar>
           <Avatar alt={comment?.account.username} src={comment?.account.image_url} />
         </ListItemAvatar>
         <ListItemText
+          sx={{color:'white'}}
           primary={comment?.account.username}
           secondary={
             <>
@@ -79,11 +82,11 @@ export default function Discussion({ article }) {
                 sx={{ display: 'inline' }}
                 component="span"
                 variant="body2"
-                color="text.primary"
+                color="white"
               >
                 {comment?.content}
               </Typography>
-              <br></br>{formatDistance(new Date(comment?.created_at), new Date(), {addSuffix: true})}
+              <br></br><small style={{color:"white"}}>{formatDistance(new Date(comment?.created_at), new Date(), {addSuffix: true})}</small>
             </>
           }
         />
@@ -95,28 +98,37 @@ export default function Discussion({ article }) {
           <DeleteIcon />
         </IconButton> : null}
       </ListItem>
-      <Divider variant="inset" component="li" />
     </div>
+      <Divider sx={{margin:'0 1rem 0 1rem'}} component="li" />
+      </>
   )}) : null
 
 
 
 
   return (
-    <Card elevation={12}> 
+    <Card elevation={5} sx={{bgcolor:'#d8d8d835',}}> 
 
-      <List sx={{ maxWidth: 380, bgcolor: 'background.paper' }}>
-        <Box>
+      <List sx={{ maxWidth: 380, height:665, bgcolor: '#d8d8d800' }}>
+      <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    flexWrap: 'wrap',
+                                    fontWeight:'bold',
+                                    float:'left'
+                                }}>
 
           <TextField
             id="outlined-name"
+            color='secondary'
             name="comment"
             value={newComment}
-            placeholder={discussion ? 'what are your thoughts?' : 'Be the first to comment!'}
+            placeholder={ comments?.length ? 'what are your thoughts?' : 'Start the conversation!'}
             onChange={e => setNewComment(e.target.value)}
+            sx={{width:'17rem', margin:'.5rem 1rem', input:{color:'white'}}}
           />
-          <Button variant='contained' onClick={handlePostComment} >Post</Button>
-        </Box>
+          <Button sx={{padding:'3%',background:'#db56d775',":hover":{background:'#db56d795'},}} variant='contained' onClick={handlePostComment} >Post</Button>
+        </div>
         {discussion}
       </List>
     </Card>

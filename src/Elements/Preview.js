@@ -30,8 +30,8 @@ function Preview() {
 
     const preview = previewArticles.map(article => (
 
-        <Grid item key={article.id}>
-             <Card sx={{ maxWidth: 345 }}>
+        <Grid item key={article.id} xs={10}>
+             <Card>
         <CardMedia
           component="img"
           height="140"
@@ -40,10 +40,10 @@ function Preview() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {article.title.slice(0,20)}...
+            {article.title.slice(0,40)}...
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {article.content.slice(0,38)}...
+            {article.content.slice(0,150)}...
           </Typography>
         </CardContent>
     </Card>
@@ -52,15 +52,13 @@ function Preview() {
     
 
     return (
-        <Card elevation={12} sx={{ maxWidth: 1000, maxHeight: 600, minHeight: 680, margin: 'auto', transform: 'translate(0,10%)' }}>
+        <Card elevation={12} sx={{ maxWidth: 1000, margin: '5rem auto', bgcolor:'#d8d8d845', color:'white' }}>
             <h1>Read these articles and more...</h1>
             <Grid container spacing={7} sx={{justifyContent:'center'}}>
                 {preview}
             </Grid>
-            <div style={{transform:'translate(0,10em)'}}>
             <h2>Join the UNIFYED community and stay up to date on the latest world news!</h2>
-            <Button variant='contained' sx={{top:'3em',background:"#2C2A4A"}} onClick={e => navigate('/login')}> Login or make an account today</Button>
-            </div>
+            <Button variant='contained' sx={{background:"#2C2A4A", marginBottom:'2rem'}} onClick={e => navigate('/login')}> Login or make an account today</Button>
         </Card>
     )
 }

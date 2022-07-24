@@ -52,8 +52,8 @@ export default function SearchPage() {
 
         return (
             
-            <Grid item xs={1} md={3} >
-            <Card sx={{maxWidth: 345, bgcolor:'#aab0b445', color:'white'}}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Card sx={{bgcolor:'#aab0b445', color:'white'}}>
                 <CardActionArea onClick={e => navigate(`/Article/${result.id}`)}>
                     <CardMedia
                         component="img"
@@ -80,8 +80,8 @@ export default function SearchPage() {
         
         return (
             
-            <Grid item xs={1} md={3}>
-            <Card sx={{ maxWidth: 345,bgcolor:'#aab0b445', color:'white' }}>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <Card sx={{bgcolor:'#aab0b445', color:'white' }}>
                 <CardActionArea onClick={e => navigate(`/Profile/${result.id}`)}>
                     <CardMedia
                         component="img"
@@ -115,21 +115,20 @@ export default function SearchPage() {
 
     return (
         <Grid container spacing={4} sx={{ justifyContent: 'center', marginTop: '1em', marginBottom: '2em' }}>
-            <Grid item xs={6} md={11} >
-                <Item elevation={5} sx={{ height: '27em', overflow:'scroll',bgcolor:'#0000' }}>People on UNIFYED
-                    <Grid container spacing={1} sx={{ }} >
+            <Grid item xs={10} container>
+            <Grid item color='white'><h1>People on UNIFYED</h1></Grid> 
+                    <Grid container spacing={2} sx={{ height: '27em', overflow:'scroll',bgcolor:'#0000' }} >
                     {peopleContent.length < 1 ? <h2>{`No users found: "${query}" `}</h2> : null}
                     {peopleContent}
                     </Grid>
-                </Item>
+
             </Grid>
-            <Grid item xs={6} md={11}>
-                <Item elevation={5} sx={{ height: '27em', overflow:'scroll', bgcolor:'#0000'}}>Headlines
-                    <Grid container spacing={1} sx={{ }} >
+            <Grid item xs={10} container>
+            <Grid item color='white'><h1>Headlines</h1></Grid>
+                    <Grid container spacing={2}  sx={{ height: '27em', overflow:'scroll', bgcolor:'#0000'}} >
                     {headlineContent.length < 1 ? <h1>{`No users found: "${query}" `}</h1> : null}
                     {headlineContent}
                     </Grid>
-                </Item>
             </Grid>
         </Grid>
     )

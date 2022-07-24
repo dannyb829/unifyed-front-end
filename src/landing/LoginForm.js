@@ -62,19 +62,23 @@ function Login({ setIsNewUser, setForgotPassword }) {
                 onSubmit={handleLogin}
             >
                 <TextField
+                    sx={{input:{background:'white', borderRadius:'5px'}}}
                     id="outlined-name"
                     name="username"
                     value={username}
                     placeholder='enter username'
                     onChange={handleCredentials}
+                    color='secondary'
                 /><br></br>
                 <TextField
+                    sx={{input:{background:'white', borderRadius:'5px'}}}
                     id="outlined-uncontrolled"
                     name="password"
                     type="password"
                     placeholder='password'
                     value={password}
                     onChange={handleCredentials}
+                    color='secondary'
                 /><br></br>
                 <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}} type='submit'>Submit</Button><br></br>
                 <Button sx={{color:'#fff', ":hover":{color:'#db56d775'}}}  onClick={e => setIsNewUser(true)}>Sign-up</Button><br></br>

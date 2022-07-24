@@ -43,7 +43,7 @@ function HomePage() {
 
 
 
-  const content = headlines?.map(article =><Grid key={article.id} item> <Headline article={article}/></Grid>)
+  const content = headlines?.map(article =><Grid key={article.id} item xs={12} md={6} lg={4} xl={3}> <Headline article={article}/></Grid>)
   const today = new Date()
 
     
@@ -58,21 +58,17 @@ function HomePage() {
     
 
             if (user) return (
-            <Box sx={{ flexGrow: 1, margin:'1em'}}>
-              <Grid container spacing={3}>
-                <Grid item xs={6} md={2} >
-                  <Item sx={{height:'131.5vh'}} >
-                    <SideTabs people={peopleFollowed}/>
-                  </Item>
-                </Grid>
-                <Grid  item xs={6} md={10} >
-                    <h1 style={{color:'#fccef1',fontSize:'6vw',fontWeight:'bold',marginTop:0, textAlign:'right'}} >¶ THE LATEST HERE ON UNIFYED: {formatRelative(today, new Date())}</h1>
-                    <Grid container spacing={2} sx={{height:'100vh',justifyContent:'right',paddingRight:'.3rem', overflow:'scroll'}}>
+              <Grid container spacing={1} padding='1em'>
+                <Grid  item xs={12} xl={10} >
+                    <h1 style={{color:'#fccef1',fontSize:'6vw',fontWeight:'bold',marginTop:0, textAlign:'left'}} >¶ THE LATEST HERE ON UNIFYED: {formatRelative(today, new Date())}</h1>
+                    <Grid container spacing={2} sx={{height:'100vh',justifyContent:'left',overflow:'scroll'}}>
                   {content}
                     </Grid>
                 </Grid>
+                <Grid item xs={12} xl={2} >
+                    <SideTabs people={peopleFollowed}/>
+                </Grid>
               </Grid>
-            </Box>
           )
           else return <Preview/>
           

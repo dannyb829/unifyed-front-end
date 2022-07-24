@@ -4,6 +4,7 @@ import { UserContext } from "../UserContext"
 import { useNavigate } from "react-router-dom"
 import SignUp from "./SignUp"
 import ForgotPassword from "./ForgotPassword"
+import { Grid } from "@mui/material"
 
 
 
@@ -20,16 +21,18 @@ function LoginPage() {
     },[])
 
     return (
-        <div id='login-page'>
+        <Grid container spacing={3} height='100vh'>
+            <Grid item display={{xs:'none', lg:'block'}} lg={6}>
             <img id='home-globe' alt='world unifyed' src='images/worldunifyed.png'></img>
-            <div id='login-items' style={{overflow:'scroll'}}>
+            <img id='home-page-slogan' src='images/slogan.png'></img>
+            </Grid>
+            <Grid item xs={12} lg={6} style={{overflow:'scroll'}}>
             <img id='home-page-logo' src='images/UNifyed.png'></img>
             {forgotPassword ? <ForgotPassword setForgotPassword={setForgotPassword}/> : isNewUser? 
                 <SignUp setIsNewUser={setIsNewUser}/>
                 : <LoginForm setIsNewUser={setIsNewUser} setForgotPassword={setForgotPassword}/>}
-            <img id='home-page-slogan' src='images/slogan.png'></img>
-            </div>
-        </div>
+            </Grid>
+        </Grid>
     )
 }
 

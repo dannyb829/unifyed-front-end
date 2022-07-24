@@ -28,21 +28,22 @@ function ForgotPassword({setForgotPassword}) {
     }
 
     return (
-        <div style={{justifyContent:'center'}}>
+        <div style={{justifyContent:'center', color:'white'}}>
         { !isSubmitted ? <>
-        <h3>Please enter your email, once submitted you<br></br> will recieve an email with a link to verify your request</h3>
+        <h3 >Please enter your email, once submitted you<br></br> will recieve an email with a link to verify your request</h3>
         <TextField
-                    sx={{top:'3em'}}
+                    sx={{top:'3em', input:{bgcolor:'white', borderRadius:'5px'}}}
                     id="outlined-name"
                     name="email"
                     value={email}
                     placeholder='enter email'
                     onChange={emailChange}
+                    color='secondary'
                 /><br></br>
-                <Button sx={{top:'6em'}}
+                <Button sx={{top:'6em',color:'#fff', ":hover":{color:'#db56d775'}}}
                         onClick={submitResetRequest}
                         >Send reset email</Button><br></br>
-                <Button sx={{top:'8em'}}
+                <Button sx={{top:'8em',color:'#fff', ":hover":{color:'#db56d775'}}}
                         onClick={e => setForgotPassword(false)}
                         >login</Button>
         </> :
