@@ -48,8 +48,8 @@ function Headline({article}) {
           <Typography variant="p" color="text.secondary">
             {source}
           </Typography>
-          <h5>CLICK FOR MORE..</h5>
         </CardContent>
+          <h5>CLICK FOR MORE..</h5>
       </CardActionArea>
     </Card>
     )
