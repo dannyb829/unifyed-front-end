@@ -109,13 +109,14 @@ export default function Discussion({ article }) {
   return (
     <Card elevation={5} sx={{bgcolor:'#d8d8d835',margin:'0 1rem'}}> 
 
-      <List sx={{ maxWidth: 380, height:665, bgcolor: '#d8d8d800' }}>
+      <List sx={{height:665, bgcolor: '#d8d8d800' }}>
       <div style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     flexWrap: 'wrap',
                                     fontWeight:'bold',
-                                    float:'left'
+                                    float:'left',
+                                    width:'100%'
                                 }}>
 
           <TextField
@@ -125,7 +126,7 @@ export default function Discussion({ article }) {
             value={newComment}
             placeholder={ comments?.length ? 'what are your thoughts?' : 'Start the conversation!'}
             onChange={e => setNewComment(e.target.value)}
-            sx={{width:'17rem', margin:'.5rem 1rem', input:{color:'white'}}}
+            sx={{width:'70%', margin:'.5rem 1rem', input:{color:'white'}}}
           />
           <Button sx={{padding:'3%',background:'#db56d775',":hover":{background:'#db56d795'},}} variant='contained' onClick={handlePostComment} >Post</Button>
         </div>
