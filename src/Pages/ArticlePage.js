@@ -90,7 +90,7 @@ function ArticlePage() {
                     </CardActions>
                 </Card>
             </Grid>
-            <Grid item xs={12} lg={2.5}>
+            <Grid item xs={12} lg={2.7}>
                 <Discussion article={article}/>
             </Grid>
         </Grid>
