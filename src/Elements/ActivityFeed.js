@@ -134,11 +134,11 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities, 
 
 
 
-    const displayActivities = activities.map(act => (
+    const displayActivities = activities?.map(act => (
         <div key={act.id} >
         <ListItem alignItems="flex-start" sx={{padding:.5}}>
             <ListItemAvatar>
-                <Avatar alt={act.owner.first_name} src={act.owner.image_url} />
+                <Avatar alt={act?.owner.first_name} src={act?.owner.image_url} />
             </ListItemAvatar>
             {inSideBar ? <br></br> : null}
             <ListItemText
