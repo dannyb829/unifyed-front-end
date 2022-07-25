@@ -104,8 +104,8 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities, 
                             variant={sideBarFont}
                             color="white"
                         >
-                            <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        {" "}now follows <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${recipient.id}`)}>{recipient.first_name + " " + recipient.last_name}</b>
+                            <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner?.first_name + " " + owner?.last_name}</b>
+                        {" "}now follows <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${recipient?.id}`)}>{recipient?.first_name + " " + recipient?.last_name}</b>
                         </Typography>
                     </React.Fragment>
                 )
@@ -118,8 +118,8 @@ function ActivityFeed({ account = '', userActivities = null, setUserActivities, 
                             variant={sideBarFont}
                             color="white"
                         >
-                            <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner.id}`)}>{owner.first_name + " " + owner.last_name}</b>
-                        {" "}published an article <b style={{cursor:'pointer'}} onClick={e => navigate(`/Article/${trackable.id}`)}>{trackable?.title}</b>
+                            <b style={{cursor:'pointer'}} onClick={e => navigate(`/Profile/${owner?.id}`)}>{owner?.first_name + " " + owner?.last_name}</b>
+                        {" "}published an article <b style={{cursor:'pointer'}} onClick={e => navigate(`/Article/${trackable?.id}`)}>{trackable?.title}</b>
                         </Typography>
                     </React.Fragment>
                 )
