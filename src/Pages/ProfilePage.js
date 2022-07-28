@@ -88,22 +88,22 @@ function ProfilePage() {
 
 
     return (
-            <Grid container spacing={1} height='100vh'>
-                <Grid item xs={12} xl={4} margin='1rem'>
+            <Grid container spacing={1} >
+                <Grid item xs={12} lg={4} xl={4} margin='1rem'>
 
                     <Card elevation={0} sx={{ bgcolor: '#00000000', color: 'white', textAlign: 'left' }}>
-                        <CardActionArea>
+                        <CardActionArea sx={{width:'100%'}}>
 
                             <CardMedia
                                 component="img"
                                 alt={first_name}
-                                height="300"
+                                // height="300"
                                 image={image_url}
                             />
                         </CardActionArea>
                         <CardContent>
-                            <Typography gutterBottom variant="h1" component="div" sx={{ fontWeight: 'bold', marginBottom: '1rem' }}>
-                                {first_name}<br/> {last_name}
+                            <Typography gutterBottom variant="h2" component="div" sx={{ fontWeight: 'bold', marginBottom: '1rem' }}>
+                                {first_name}<br/> <b style={{color:'#fccef1'}} >{last_name}</b>
                             </Typography>
                             <Divider variant="inset" />
                             <br></br>
@@ -145,7 +145,7 @@ function ProfilePage() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={12} xl={7.5} container margin='1rem'>
+                <Grid item xs={12} lg={7.5} container marginTop='1rem'>
 
                     {user?.id === parseInt(id) ? <Grid item xs={12} marginBottom='1em'>
                         {/* <Item elevation={5} sx={{ height: '10.3em', marginBottom: '3em', bgcolor:'#d8d8d835' }} > */}
@@ -163,15 +163,15 @@ function ProfilePage() {
 
                             <Button id='feed-post-button'
                                 variant='contained'
-                                sx={{float:'right',marginTop:'1rem',color:'white', background:'#db56d775', ":hover":{background:'#db56d795'}}}
+                                sx={{float:'right',margin:'1rem',color:'white', background:'#db56d775', ":hover":{background:'#db56d795'}}}
                                 onClick={handlePost}
                             >POST</Button>
 
 
                         {/* </Item> */}
                     </Grid> : null}
-                    <Grid item xs={12} >
-                        <Item elevation={5} sx={{ height: '43.51em', overflow: 'scroll', background: '#00000000' }} >Activity
+                    <Grid item xs={12}  >
+                        <Item elevation={5} sx={{ height: '43.51em', overflow: 'scroll', background: '#00000000',marginBottom:'1rem' }} >Activity
                             <ActivityFeed account={id} userActivities={userActivities} setUserActivities={setUserActivities} />
                         </Item>
                     </Grid>

@@ -59,13 +59,13 @@ function HomePage() {
 
             if (user) return (
               <Grid container spacing={1} padding='1em'>
-                <Grid  item xs={12} xl={10} >
+                <Grid  item xs={12} lg={10} xl={10} >
                     <h1 style={{color:'#fccef1',fontSize:'6vw',fontWeight:'bold',marginTop:0, textAlign:'left'}} >¶ THE LATEST HERE ON UNIFYED: {formatRelative(today, new Date())}</h1>
                     <Grid container spacing={2} sx={{height:'100vh',justifyContent:'left',overflow:'scroll'}}>
                   {content}
                     </Grid>
                 </Grid>
-                <Grid item xs={12} xl={2} >
+                <Grid item xs={12} lg={2} xl={2} >
                     <SideTabs people={peopleFollowed}/>
                 </Grid>
               </Grid>
