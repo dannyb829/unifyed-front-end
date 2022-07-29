@@ -79,13 +79,13 @@ function Publish() {
     return (
         <Grid container spacing={1} padding='1rem'>
             <Grid item xs={12}>
-                <Card elevation={0} sx={{bgcolor:'#0000',color:'white',margin:'auto' }}>
-                <IconButton aria-label="upload image" color='primary' sx={{ transform: 'scale(3)', left:'6%',top:'15%', position:'absolute'}}>
-                    <label htmlFor='upload-input'>
-                        <AddCircleIcon />
-                        <input accept="image/*" id="upload-input" multiple type="file" name='image_url' style={{ display: 'none' }} onChange={e => uploadImage(e.target.files[0])}></input>
-                    </label>
-                </IconButton>
+                <Card elevation={0} sx={{ bgcolor: '#0000', color: 'white', margin: 'auto' }}>
+                    <IconButton aria-label="upload image" color='primary' sx={{ transform: 'scale(3)', left: '6%', top: '15%', position: 'absolute' }}>
+                        <label htmlFor='upload-input'>
+                            <AddCircleIcon />
+                            <input accept="image/*" id="upload-input" multiple type="file" name='image_url' style={{ display: 'none' }} onChange={e => uploadImage(e.target.files[0])}></input>
+                        </label>
+                    </IconButton>
 
                     <CardMedia
                         component="img"
@@ -93,9 +93,9 @@ function Publish() {
                         image={image_url}
                         alt="something"
                     />
-                    <h1 style={{textAlign:'left', marginLeft:'2rem'}}>Title</h1>
+                    <h1 style={{ textAlign: 'left', marginLeft: '2rem' }}>Title</h1>
                     <TextField
-                        sx={{width: '95%',input: { color: 'white',fontWeight:'bold' }, marginBottom:'2rem' }}
+                        sx={{ width: '95%', input: { color: 'white', fontWeight: 'bold' }, marginBottom: '2rem' }}
                         id="outlined-required"
                         name='title'
                         value={title}
@@ -103,9 +103,9 @@ function Publish() {
                         color='secondary'
                     />
 
-                    <h1 style={{textAlign:'left', margin:'0 0 0 2rem'}}>Tell your story</h1>
+                    <h1 style={{ textAlign: 'left', margin: '0 0 0 2rem' }}>Tell your story</h1>
                     <TextField
-                        sx={{width: '95%',textArea: { color: 'white',fontWeight:'bold' } }}
+                        sx={{ width: '95%', textArea: { color: 'white', fontWeight: 'bold' } }}
                         id="outlined"
                         name='content'
                         multiline
@@ -115,7 +115,7 @@ function Publish() {
                         color='secondary'
                     />
                     <Button variant='contained'
-                        sx={{float:'right',margin:'.7rem 2.5%',background:'#db56d775', ":hover":{background:'#db56d795'} }}
+                        sx={{ float: 'right', margin: '.7rem 2.5%', background: '#db56d775', ":hover": { background: '#db56d795' } }}
                         onClick={publishArticle}
                     >Publish</Button>
                 </Card>

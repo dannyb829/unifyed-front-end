@@ -44,18 +44,18 @@ function AccountPage() {
     } = profileUpdate
 
     function faceDetectTransorm(link) {
-       return [link.split('upload/')[0],"upload/c_thumb,g_faces,h_300,w_400/",link.split('upload/')[1]].join('')
+        return [link.split('upload/')[0], "upload/c_thumb,g_faces,h_300,w_400/", link.split('upload/')[1]].join('')
     }
 
 
     const uploadImage = (e) => {
         e.stopPropagation()
         const formData = new FormData()
-        formData.append('file', image)
+        formData.append('file', e.target.files[0])
         formData.append("upload_preset", "equlchhq")
 
         axios.post("https://api.cloudinary.com/v1_1/unifyed-media/image/upload", formData)
-            .then(image => setProfileUpdate(prev => ({...prev, image_url: faceDetectTransorm(image.data.secure_url)})))
+            .then(image => setProfileUpdate(prev => ({ ...prev, image_url: faceDetectTransorm(image.data.secure_url) })))
     }
 
 
@@ -80,91 +80,86 @@ function AccountPage() {
 
     return (
 
-        <Card elevation={3} sx={{margin:'3% auto', maxWidth: 1000, minHeight: 680, overflow: 'scroll' ,bgcolor:'#d8d8d845'}}>
+        <Card elevation={3} sx={{ margin: '3% auto', maxWidth: 1000, minHeight: 680, overflow: 'scroll', bgcolor: '#d8d8d845', color: 'white', textArea: { color: 'white' } }}>
             <Grid container spacing={3}>
-                <Grid item xs={12} md={6} container spacing={4} sx={{color:'white', textArea:{color:'white'}}}>
-                            <Grid item xs={12} >
-                            <h1 style={{float:'left', marginLeft:'.5em'}}>EDIT PROFILE</h1>
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="first name"
-                                name="first_name"
-                                multiline
-                                maxRows={4}
-                                value={first_name}
-                                onChange={handleChange}
-                                color='secondary'
-                            />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="last name"
-                                name="last_name"
-                                multiline
-                                maxRows={4}
-                                value={last_name}
-                                onChange={handleChange}
-                                color='secondary'
-                            />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="username"
-                                name="username"
-                                multiline
-                                maxRows={4}
-                                value={username}
-                                onChange={handleChange}
-                                color='secondary'
-                            />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-
-
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="email"
-                                name="email"
-                                multiline
-                                maxRows={4}
-                                value={email}
-                                onChange={handleChange}
-                                color='secondary'
-                            />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Bio"
-                                name="bio"
-                                multiline
-                                rows={4}
-                                placeholder='Describe yourself'
-                                value={bio}
-                                onChange={handleChange}
-                                color='secondary'
-                            />
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-
-                        <Button variant='contained' endIcon={<SaveIcon />} onClick={handleProfileUpdate} >save changes</Button>
-                            </Grid>
-                        <Divider variant="inset" />
+                <Grid item xs={12} >
+                    <h1 style={{ float: 'left', marginLeft: '.5em' }}>EDIT PROFILE</h1>
                 </Grid>
-                <Grid item xs={12} md={6} margin='5rem auto'>
-                    <img src={image_url} style={{maxWidth:'15rem'}}/>
+                <Grid item xs={12} md={6}>
+
+                    <TextField
+                        id="outlined-multiline-flexible"
+                        label="first name"
+                        name="first_name"
+                        multiline
+                        maxRows={4}
+                        value={first_name}
+                        onChange={handleChange}
+                        color='secondary'
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <TextField
+                        id="outlined-multiline-flexible"
+                        label="last name"
+                        name="last_name"
+                        multiline
+                        maxRows={4}
+                        value={last_name}
+                        onChange={handleChange}
+                        color='secondary'
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+
+                    <TextField
+                        id="outlined-multiline-flexible"
+                        label="username"
+                        name="username"
+                        multiline
+                        maxRows={4}
+                        value={username}
+                        onChange={handleChange}
+                        color='secondary'
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+
+
+                    <TextField
+                        id="outlined-multiline-flexible"
+                        label="email"
+                        name="email"
+                        multiline
+                        maxRows={4}
+                        value={email}
+                        onChange={handleChange}
+                        color='secondary'
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Bio"
+                        name="bio"
+                        multiline
+                        rows={4}
+                        placeholder='Describe yourself'
+                        value={bio}
+                        onChange={handleChange}
+                        color='secondary'
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <img src={image_url} style={{ maxWidth: '15rem' }} />
                     <label htmlFor="contained-button-file">
-                        <input style={{color:'white'}} accept="image/*" id="contained-button-file" multiple type="file" name='image_url' onChange={e => setImage(e.target.files[0])}></input>
+                        <input style={{ color: 'white' }} accept="image/*" id="contained-button-file" multiple type="file" name='image_url' onChange={uploadImage}></input>
                     </label>
-                        <Button variant="contained" component="span" onClick={uploadImage}>
-                            Upload
-                        </Button>
+
+                </Grid>
+                <Grid item xs={12} sx={{ margin: '3.5rem 0' }}>
+                    <Button variant='contained' sx={{ background: '#db56d775', ":hover": { background: '#db56d795' } }} endIcon={<SaveIcon />} onClick={handleProfileUpdate} >save changes</Button>
+
                 </Grid>
             </Grid>
         </Card>
