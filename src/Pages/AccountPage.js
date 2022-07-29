@@ -124,8 +124,6 @@ function AccountPage() {
                     />
                 </Grid>
                 <Grid item xs={12} md={6}>
-
-
                     <TextField
                         id="outlined-multiline-flexible"
                         label="email"
@@ -153,7 +151,7 @@ function AccountPage() {
                 <Grid item xs={12} md={6}>
                     <img src={image_url} style={{ maxWidth: '15rem' }} />
                     <label htmlFor="contained-button-file">
-                        <input style={{ color: 'white' }} accept="image/*" id="contained-button-file" multiple type="file" name='image_url' onChange={uploadImage}></input>
+                        <input style={{ color: 'white' }} accept="image/*" id="contained-button-file" type="file" name='image_url' onChange={uploadImage}></input>
                     </label>
 
                 </Grid>
